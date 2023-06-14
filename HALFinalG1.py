@@ -106,7 +106,7 @@ for page in range(2,total_page+1):
     tbody = table.find_element(By.TAG_NAME, 'tbody')
     page_data(tbody)
 
-for bid_, des_,sdate_, edate_,loc_,dep_ in zip(bid_list,des_list,sdate_list,edate_list,loc_list,dep_list):
+for bid_, des_,sdate_, edate_,loc_,dep_,pdf_ in zip(bid_list,des_list,sdate_list,edate_list,loc_list,dep_list,pdf_list):
 
         result = coll.find_one({"bidNo": bid_})
 
@@ -126,7 +126,7 @@ for bid_, des_,sdate_, edate_,loc_,dep_ in zip(bid_list,des_list,sdate_list,edat
                             {"$set": {"scrappedOn": datetime.now().replace(microsecond=0).isoformat(),
                                       "items": des_,
                                       "updatedOnServer": False,
-                                      "pdfLink": None,
+                                      "pdfLink": pdf_,
                                       "startDate": sdate_,
                                       "modifiedOn": datetime.now().replace(microsecond=0).isoformat(),
                                       "organizationName": "Hindustan Aeronautics Limited",
